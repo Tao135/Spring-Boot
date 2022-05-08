@@ -9,7 +9,6 @@ spring:
       username: root
       password: 123456
 
-# \u8BBE\u7F6Eid\u81EA\u589E
 mybatis-plus:
   global-config:
     db-config:
