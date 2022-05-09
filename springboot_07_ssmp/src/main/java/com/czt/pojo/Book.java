@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Book {
 //    @TableId(type = IdType.AUTO)
     private int id;
-    private String username;
-    private String password;
-    private String birthday;
+    private String type;
+    private String name;
+    private String descire;
 }

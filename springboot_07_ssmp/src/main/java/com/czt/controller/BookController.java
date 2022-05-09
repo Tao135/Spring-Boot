@@ -26,7 +26,7 @@ public class BookController {
 
     @PostMapping
     public R save(@RequestBody Book book) throws IOException {
-        if(book.getUsername().equals("123")) throw  new IOException();
+        if(book.getName().equals("123")) throw  new IOException();
         boolean flag = bookService.save(book);
         return new R(flag,flag ? "添加成功" : "添加失败");
     }
@@ -36,18 +36,23 @@ public class BookController {
         return new R(bookService.update(qw));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public R delete(@PathVariable Integer id){        //@PathVariable表示从路径中获取数据
         return new R(bookService.removeById(id));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public R getById(@PathVariable Integer id){
         return new R(true,bookService.getById(id));
     }
 
-    @GetMapping("/{currentPage}/{pageSize}")
+    @GetMapping("{currentPage}/{pageSize}")
     public R getPage(@PathVariable int currentPage,@PathVariable int pageSize){
-        return new R(true,bookService.getPage(currentPage,pageSize));
+        IPage<Book> page = bookService.getPage(currentPage,pageSize);
+        //如果当前页码值大于总页码，那么重新执行查询操作，使用最大页码作为当前页码之
+        if( currentPage > page.getPages()){
+            page = bookService.getPage((int)page.getPages(),pageSize);
+        }
+        return new R(true,page);
     }
 }
