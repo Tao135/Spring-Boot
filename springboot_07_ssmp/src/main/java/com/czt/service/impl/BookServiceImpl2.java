@@ -27,7 +27,7 @@ public class BookServiceImpl2 extends ServiceImpl<BookDao, Book> implements IBoo
     @Override
     public IPage<Book> getPage(int currentPage, int pageSize, Book book) {
         LambdaQueryWrapper<Book> lqw=new LambdaQueryWrapper<Book>();
-        lqw.like(Strings.isNotEmpty(book.getType()),Book::getType,book.getType());
+        lqw.like(Strings.isNotEmpty(book.getType()),Book::getType,book.getType());      //Strings是一个工具类，isNotEmpty是判断里面的字符是否非空，isNotBlank也是判断非空，但是前者包括空格作为参数，而后者不是。
         lqw.like(Strings.isNotEmpty(book.getName()),Book::getName,book.getName());
         lqw.like(Strings.isNotEmpty(book.getDescription()),Book::getDescription,book.getDescription());
 
