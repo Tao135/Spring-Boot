@@ -31,7 +31,7 @@ class Springboot07SsmpApplicationTests {
         String name = "t";
 
         LambdaQueryWrapper<Book> lqw = new LambdaQueryWrapper<Book>();
-        lqw.like(name != null,Book::getUsername,name);      //表明username非空时，执行语句.
+        lqw.like(name != null,Book::getName,name);      //表明username非空时，执行语句.
         bookDao.selectList(lqw);
     }
 }

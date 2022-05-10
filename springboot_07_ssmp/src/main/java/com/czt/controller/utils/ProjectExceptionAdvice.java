@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ProjectExceptionAdvice {
     //拦截所有的异常信息
-    @ExceptionHandler
+    @ExceptionHandler(Exception.class)
     public R deException(Exception ex){
         //记录日志
         //通知运维

@@ -13,7 +13,7 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
-
+      table-prefix: tbl_
 
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

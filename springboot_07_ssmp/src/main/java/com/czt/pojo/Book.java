@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("user")
+//@TableName("tbl_book")
 public class Book {
 //    @TableId(type = IdType.AUTO)
-    private int id;
+    private Integer id;
     private String type;
     private String name;
-    private String descire;
+    private String description;
 }
